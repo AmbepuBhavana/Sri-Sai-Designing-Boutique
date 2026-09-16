@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80" fill="none" role="img" aria-label="Sri Sai Designing Boutique">
+  <rect x="4" y="8" width="64" height="64" rx="6" fill="#0B0B0B" stroke="#D4AF37"/>
+  <path d="M36 16c-6 8-10 16-10 24 0 8 4.5 14 10 18 5.5-4 10-10 10-18 0-8-4-16-10-24z" fill="#D4AF37"/>
+  <path d="M36 22c-3.5 6-6 12-6 18 0 6 2.6 10.5 6 13.5 3.4-3 6-7.5 6-13.5 0-6-2.5-12-6-18z" fill="#0B0B0B"/>
+  <circle cx="36" cy="38" r="3" fill="#D4AF37"/>
+  <text x="84" y="38" fill="#F8F4EC" font-family="Georgia, serif" font-size="22" letter-spacing="6">SRI SAI</text>
+  <text x="84" y="58" fill="#D4AF37" font-family="Arial, sans-serif" font-size="9" letter-spacing="3.5">DESIGNING BOUTIQUE</text>
+</svg>
