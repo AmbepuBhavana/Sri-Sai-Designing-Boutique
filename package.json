@@ -26,6 +26,7 @@
     "@vitejs/plugin-react": "^5.0.2",
     "concurrently": "^9.2.1",
     "tailwindcss": "^4.1.13",
+    "terser": "^5.51.2",
     "typescript": "^5.9.2",
     "vite": "^7.1.5"
   }
