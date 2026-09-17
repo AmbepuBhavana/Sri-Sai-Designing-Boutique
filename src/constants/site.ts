@@ -50,12 +50,16 @@ For appointments and enquiries, feel free to contact us on WhatsApp.
 
 Thank you for choosing ${SITE.name} ❤️`;
 
-export function addWebsiteToWhatsAppText(text: string) {
-  return text.includes(SITE.url) ? text : `${text}\n\nWebsite: ${SITE.url}`;
+export function addBusinessDetailsToWhatsAppText(text: string) {
+  if (text.includes(SITE.url) && text.includes(SITE.mapsShare) && text.includes(SITE.phone)) {
+    return text;
+  }
+
+  return `${text}\n\nLocation: ${SITE.mapsShare}\nContact: ${SITE.phone}\nWebsite: ${SITE.url}`;
 }
 
 export const waLink = (text = WHATSAPP_WELCOME_MESSAGE) =>
-  `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(addWebsiteToWhatsAppText(text))}`;
+  `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(addBusinessDetailsToWhatsAppText(text))}`;
 
 export const NAV = [
   { label: "Home", href: "/#home" },

@@ -1,4 +1,4 @@
-import { addWebsiteToWhatsAppText, SITE } from "@/constants/site";
+import { addBusinessDetailsToWhatsAppText, SITE } from "@/constants/site";
 import type { EnquiryPayload } from "@/types";
 import { isValidEmail, isValidIndianMobile, sanitizeText } from "@/utils";
 
@@ -22,7 +22,7 @@ I would like to make an enquiry:
 • Email: ${payload.email || "Not provided"}
 • Service: ${payload.service}
 • Message: ${payload.message || "Please share design and consultation details."}`;
-  return `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(addWebsiteToWhatsAppText(text))}`;
+  return `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(addBusinessDetailsToWhatsAppText(text))}`;
 }
 
 export async function submitEnquiry(payload: EnquiryPayload) {
