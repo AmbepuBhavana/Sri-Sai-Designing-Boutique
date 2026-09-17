@@ -270,6 +270,7 @@ export const GALLERY: GalleryItem[] = [
   { id: "cs-3", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789196136/cs3.jpg", alt: "Custom tailored blouse neckline pattern", category: "Custom Stitching" },
   { id: "cs-4", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789196137/cs2.jpg", alt: "Precision custom stitching", category: "Custom Stitching" },
   { id: "cs-5", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789196140/cs1.jpg", alt: "Luxury custom tailored piece", category: "Custom Stitching" },
+  { id: "cs-new-custom1", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789635767/custom1.jpg", alt: "Custom stitching boutique design", category: "Custom Stitching" },
 
   // --- TASSELS ---
   { id: "ts-1", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789196681/ts4.jpg", alt: "Handmade bridal blouse tassels", category: "Tassels" },
@@ -316,6 +317,8 @@ export const GALLERY: GalleryItem[] = [
   { id: "mg-new-f3", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789629135/mgf3.jpg", alt: "Detailed bridal maggam work design 3", category: "Maggam Work" },
   { id: "mg-new-f1", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789629013/mgf1.jpg", alt: "Detailed bridal maggam work design 1", category: "Maggam Work" },
   { id: "mg-new-f2", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789629085/mgf2.jpg", alt: "Detailed bridal maggam work design 2", category: "Maggam Work" },
+  { id: "mg-new-f11", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789635747/mgf11.jpg", alt: "Detailed bridal maggam work design 11", category: "Maggam Work" },
+  { id: "mg-new-f12", src: "https://res.cloudinary.com/ag114ghj/video/upload/v1789635752/mgf12.mp4", alt: "Bridal maggam work craftsmanship video 12", category: "Maggam Work" },
 
   // --- EMBROIDERY ---
   { id: "em-1", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789105045/cd2.jpg", alt: "Precision computer embroidery design 2", category: "Embroidery" },
