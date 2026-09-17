@@ -26,28 +26,21 @@ export const SITE = {
   url: SITE_URL,
 } as const;
 
-export const WHATSAPP_WELCOME_MESSAGE = `Hello 👋
+export const WHATSAPP_CUSTOMER_MESSAGE = `Hi ${SITE.name},
 
-Hi ${SITE.name},
+I found your website and I’m interested in your services.
 
-I found your boutique through your website.
-
-I’m interested in your services and would like to know more about:
-• Designer & Bridal Blouses
-• Maggam Work
-• Computer Embroidery
-• Custom Stitching
-• Printing Work
-• Designer Dresses
-
-Please share the details, available designs, pricing, and location.
-
-Website:
-${SITE.url}
+Please share your designs, pricing, location, and appointment details.
 
 Thank you.`;
 
+export const WHATSAPP_WELCOME_MESSAGE = WHATSAPP_CUSTOMER_MESSAGE;
+
 export function addBusinessDetailsToWhatsAppText(text: string) {
+  if (text === WHATSAPP_CUSTOMER_MESSAGE) {
+    return text;
+  }
+
   const details = [
     !text.includes(SITE.mapsShare) ? `Location: ${SITE.mapsShare}` : "",
     !text.includes(SITE.phone) ? `Contact: ${SITE.phone}` : "",
