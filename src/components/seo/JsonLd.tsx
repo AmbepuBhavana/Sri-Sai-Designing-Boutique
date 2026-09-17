@@ -13,8 +13,10 @@ export function JsonLd() {
     telephone: SITE.phoneHref.replace("tel:", ""),
     address: {
       "@type": "PostalAddress",
+      streetAddress: "High School, Road Main Road",
       addressLocality: "Rampally",
       addressRegion: "Telangana",
+      postalCode: "501302",
       addressCountry: "IN",
     },
     url: SITE.url,

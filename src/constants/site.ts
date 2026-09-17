@@ -13,14 +13,15 @@ export const SITE = {
   whatsapp: "919542404498",
   hours: "9 AM – 9 PM",
   hoursNote: "Open all days",
-  address: "Rampally, Hyderabad, Telangana",
+  address: "High School, Road Main Road, Rampally, Hyderabad, Secunderabad, Telangana 501302",
   instagram: "https://www.instagram.com/sri_sai_designing_boutique",
   instagramHandle: "@sri_sai_designing_boutique",
   instagramReel: "https://www.instagram.com/reel/DbN9GCDT-Jl/?igsh=ZmpqMW43ejFnbjFu",
-  mapsShare: "https://maps.app.goo.gl/WdERjk4D7cJ1CqPt5",
+  mapsShare:
+    "https://www.google.com/maps/search/?api=1&query=High+School%2C+Road+Main+Road%2C+Rampally%2C+Hyderabad%2C+Secunderabad%2C+Telangana+501302",
   googleReviews: "https://share.google/HITjcAZ1kcU19Aytk",
   mapsEmbed:
-    "https://maps.google.com/maps?q=Sri+Sai+Designing+Boutique,Rampally,Hyderabad,Telangana&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "https://maps.google.com/maps?q=High+School%2C+Road+Main+Road%2C+Rampally%2C+Hyderabad%2C+Secunderabad%2C+Telangana+501302&t=&z=15&ie=UTF8&iwloc=&output=embed",
   email: "hello@srisai.designingboutique.in",
   url: SITE_URL,
 } as const;
