@@ -28,11 +28,11 @@ export const SITE = {
 
 export const WHATSAPP_WELCOME_MESSAGE = `Hello 👋
 
-Welcome to ${SITE.name} ✨
+Hi ${SITE.name},
 
-Thank you for choosing us!
+I found your boutique through your website.
 
-✨ Our Services:
+I’m interested in your services and would like to know more about:
 • Designer & Bridal Blouses
 • Maggam Work
 • Computer Embroidery
@@ -40,22 +40,25 @@ Thank you for choosing us!
 • Printing Work
 • Designer Dresses
 
-📍 Location: ${SITE.mapsShare}
-📞 Contact: ${SITE.phone}
-🌐 Website: ${SITE.url}
+Please share the details, available designs, pricing, and location.
 
-You can explore our services, designs and latest work on our website.
+Website:
+${SITE.url}
 
-For appointments and enquiries, feel free to contact us on WhatsApp.
-
-Thank you for choosing ${SITE.name} ❤️`;
+Thank you.`;
 
 export function addBusinessDetailsToWhatsAppText(text: string) {
-  if (text.includes(SITE.url) && text.includes(SITE.mapsShare) && text.includes(SITE.phone)) {
+  const details = [
+    !text.includes(SITE.mapsShare) ? `Location: ${SITE.mapsShare}` : "",
+    !text.includes(SITE.phone) ? `Contact: ${SITE.phone}` : "",
+    !text.includes(SITE.url) ? `Website: ${SITE.url}` : "",
+  ].filter(Boolean);
+
+  if (!details.length) {
     return text;
   }
 
-  return `${text}\n\nLocation: ${SITE.mapsShare}\nContact: ${SITE.phone}\nWebsite: ${SITE.url}`;
+  return `${text}\n\n${details.join("\n")}`;
 }
 
 export const waLink = (text = WHATSAPP_WELCOME_MESSAGE) =>
