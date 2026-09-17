@@ -49,8 +49,12 @@ For appointments and enquiries, feel free to contact us on WhatsApp.
 
 Thank you for choosing ${SITE.name} ❤️`;
 
+export function addWebsiteToWhatsAppText(text: string) {
+  return text.includes(SITE.url) ? text : `${text}\n\nWebsite: ${SITE.url}`;
+}
+
 export const waLink = (text = WHATSAPP_WELCOME_MESSAGE) =>
-  `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(text)}`;
+  `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(addWebsiteToWhatsAppText(text))}`;
 
 export const NAV = [
   { label: "Home", href: "/#home" },
