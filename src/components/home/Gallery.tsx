@@ -2,7 +2,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { GALLERY, GALLERY_FILTERS, SITE } from "@/constants/site";
 import type { GalleryCategory, GalleryItem } from "@/types";
-import { getVideoPosterUrl } from "@/utils";
+import { getOptimizedVideoUrl, getVideoPosterUrl } from "@/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
@@ -103,13 +103,13 @@ export function Gallery() {
                 {isVideo ? (
                   <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-black">
                     <video
-                      src={g.src}
+                      src={getOptimizedVideoUrl(g.src, 640)}
                       poster={poster || undefined}
                       autoPlay
                       muted
                       loop
                       playsInline
-                      preload="none"
+                      preload="metadata"
                       ref={(el) => {
                         if (el) {
                           el.muted = true;
@@ -161,7 +161,7 @@ export function Gallery() {
           <button className="absolute inset-0" aria-label="Close preview" onClick={() => setActive(null)} />
           {active.src.endsWith(".mp4") ? (
             <video
-              src={active.src}
+              src={getOptimizedVideoUrl(active.src, 1080)}
               controls
               autoPlay
               loop
@@ -246,13 +246,13 @@ export function Instagram() {
             >
               {isVid ? (
                 <video
-                  src={t.src}
+                  src={getOptimizedVideoUrl(t.src, 480)}
                   poster={poster}
                   autoPlay
                   muted
                   loop
                   playsInline
-                  preload="none"
+                  preload="metadata"
                   ref={(el) => {
                     if (el) {
                       el.muted = true;

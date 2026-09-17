@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://srisai.designingboutique.in/sitemap.xml
+Sitemap: https://srisaidesigningboutiquerampally.vercel.app/sitemap.xml

@@ -1,5 +1,7 @@
 import type { FaqItem, GalleryItem, Service, Testimonial } from "@/types";
 
+const SITE_URL = import.meta.env.VITE_SITE_URL || "https://srisaidesigningboutiquerampally.vercel.app";
+
 export const SITE = {
   name: "Sri Sai Designing Boutique",
   shortName: "Sri Sai",
@@ -20,10 +22,34 @@ export const SITE = {
   mapsEmbed:
     "https://maps.google.com/maps?q=Sri+Sai+Designing+Boutique,Rampally,Hyderabad,Telangana&t=&z=15&ie=UTF8&iwloc=&output=embed",
   email: "hello@srisai.designingboutique.in",
-  url: "https://srisai.designingboutique.in",
+  url: SITE_URL,
 } as const;
 
-export const waLink = (text = `Hello ${SITE.name}, I would like to book a custom design.`) =>
+export const WHATSAPP_WELCOME_MESSAGE = `Hello 👋
+
+Welcome to ${SITE.name} ✨
+
+Thank you for choosing us!
+
+✨ Our Services:
+• Designer & Bridal Blouses
+• Maggam Work
+• Computer Embroidery
+• Custom Stitching
+• Printing Work
+• Designer Dresses
+
+📍 Location: ${SITE.mapsShare}
+📞 Contact: ${SITE.phone}
+🌐 Website: ${SITE.url}
+
+You can explore our services, designs and latest work on our website.
+
+For appointments and enquiries, feel free to contact us on WhatsApp.
+
+Thank you for choosing ${SITE.name} ❤️`;
+
+export const waLink = (text = WHATSAPP_WELCOME_MESSAGE) =>
   `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(text)}`;
 
 export const NAV = [
@@ -141,7 +167,7 @@ export const WHY_US = [
 ] as const;
 
 export const STATS = [
-  { value: 500, suffix: "+", label: "Designs delivered", decimals: 0 },
+  { value: 1500, suffix: "+", label: "Designs delivered", decimals: 0 },
   { value: 15, suffix: "+", label: "Years of craft", decimals: 0 },
   { value: 4.9, suffix: "", label: "Average client rating", decimals: 1 },
   { value: 8, suffix: "", label: "Atelier services", decimals: 0 },
@@ -230,6 +256,14 @@ export const FEATURED = FEATURED_PAIRS.flatMap((p) => [p.left, p.right]);
 
 
 export const GALLERY: GalleryItem[] = [
+  // --- HIGHLIGHTED IN ALL ---
+  { id: "mg-highlight-f4", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789629135/mgf4.jpg", alt: "Featured bridal maggam work design 4", category: "Maggam Work" },
+  { id: "mg-highlight-pic5", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789196673/mgpic5.jpg", alt: "Featured bridal maggam blouse craft", category: "Maggam Work" },
+  { id: "mg-highlight-bq4", src: "https://res.cloudinary.com/ag114ghj/video/upload/v1789045953/bq4.mp4", alt: "Featured boutique maggam artisan work video", category: "Maggam Work" },
+  { id: "mg-highlight-pic3", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789196405/mgpic3.jpg", alt: "Featured bridal maggam work blouse design", category: "Maggam Work" },
+  { id: "df-highlight-14", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789196406/frck14.jpg", alt: "Featured custom stitched festive dress", category: "Designer Dresses & Frocks" },
+  { id: "df-highlight-17", src: "https://res.cloudinary.com/ag114ghj/video/upload/v1789196471/frck17.mp4", alt: "Featured boutique frock creation video", category: "Designer Dresses & Frocks" },
+
   // --- CUSTOM STITCHING ---
   { id: "cs-1", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789196106/cs5.jpg", alt: "Custom designer blouse stitching", category: "Custom Stitching" },
   { id: "cs-2", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789196109/cs6.jpg", alt: "Bespoke custom blouse cut and finish", category: "Custom Stitching" },
@@ -258,9 +292,7 @@ export const GALLERY: GalleryItem[] = [
   { id: "df-10", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789196398/frck10.jpg", alt: "Bespoke stitched frock with border", category: "Designer Dresses & Frocks" },
   { id: "df-11", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789196399/frck11.jpg", alt: "Handcrafted occasion frock", category: "Designer Dresses & Frocks" },
   { id: "df-12", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789196404/frck15.jpg", alt: "Elegant boutique designer frock", category: "Designer Dresses & Frocks" },
-  { id: "df-13", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789196406/frck14.jpg", alt: "Custom stitched festive dress", category: "Designer Dresses & Frocks" },
   { id: "df-14", src: "https://res.cloudinary.com/ag114ghj/video/upload/v1789196437/frck16.mp4", alt: "Designer dress drape video", category: "Designer Dresses & Frocks" },
-  { id: "df-15", src: "https://res.cloudinary.com/ag114ghj/video/upload/v1789196471/frck17.mp4", alt: "Boutique frock creation video", category: "Designer Dresses & Frocks" },
   { id: "df-16", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789196478/frck1.jpg", alt: "Pink custom stitched frock", category: "Designer Dresses & Frocks" },
   { id: "df-17", src: "https://res.cloudinary.com/ag114ghj/video/upload/v1789196532/frck_19.mp4", alt: "Designer frock twirl video", category: "Designer Dresses & Frocks" },
 
@@ -273,7 +305,6 @@ export const GALLERY: GalleryItem[] = [
   { id: "mg-v3", src: "https://res.cloudinary.com/ag114ghj/video/upload/v1789045873/bq10.mp4", alt: "Fine zardosi needlework reel 10", category: "Maggam Work" },
   { id: "mg-v4", src: "https://res.cloudinary.com/ag114ghj/video/upload/v1789045879/bq5.mp4", alt: "Grand bridal neckline maggam reel 5", category: "Maggam Work" },
   { id: "mg-v5", src: "https://res.cloudinary.com/ag114ghj/video/upload/v1789045913/bq9.mp4", alt: "Handcrafted bead and thread maggam reel 9", category: "Maggam Work" },
-  { id: "mg-v6", src: "https://res.cloudinary.com/ag114ghj/video/upload/v1789045953/bq4.mp4", alt: "Boutique maggam artisan work reel 4", category: "Maggam Work" },
   { id: "mg-v7", src: "https://res.cloudinary.com/ag114ghj/video/upload/v1789046434/bq8.mp4", alt: "Intricate maggam floral pattern reel 8", category: "Maggam Work" },
   { id: "mg-v8", src: "https://res.cloudinary.com/ag114ghj/video/upload/v1789046437/bq13.mp4", alt: "Bridal blouse zardosi finish reel 13", category: "Maggam Work" },
   { id: "mg-v9", src: "https://res.cloudinary.com/ag114ghj/video/upload/v1789046464/bq12.mp4", alt: "Maggam hand embroidery craftsmanship reel 12", category: "Maggam Work" },
@@ -281,6 +312,10 @@ export const GALLERY: GalleryItem[] = [
   { id: "mg-v11", src: "https://res.cloudinary.com/ag114ghj/video/upload/v1789046556/bq11.mp4", alt: "Exquisite bridal blouse motif reel 11", category: "Maggam Work" },
   { id: "mg-v12", src: "https://res.cloudinary.com/ag114ghj/video/upload/v1789046569/bq6.mp4", alt: "Traditional maggam artistry reel 6", category: "Maggam Work" },
   { id: "mg-old2", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789196401/mgpic2.jpg", alt: "Bridal maggam blouse zardosi craft", category: "Maggam Work" },
+  { id: "mg-new-f5", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789629136/mgf5.jpg", alt: "Detailed bridal maggam work design 5", category: "Maggam Work" },
+  { id: "mg-new-f3", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789629135/mgf3.jpg", alt: "Detailed bridal maggam work design 3", category: "Maggam Work" },
+  { id: "mg-new-f1", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789629013/mgf1.jpg", alt: "Detailed bridal maggam work design 1", category: "Maggam Work" },
+  { id: "mg-new-f2", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789629085/mgf2.jpg", alt: "Detailed bridal maggam work design 2", category: "Maggam Work" },
 
   // --- EMBROIDERY ---
   { id: "em-1", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789105045/cd2.jpg", alt: "Precision computer embroidery design 2", category: "Embroidery" },
@@ -301,6 +336,7 @@ export const GALLERY: GalleryItem[] = [
   { id: "db-3", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789196136/cs3.jpg", alt: "Custom tailored blouse neckline pattern", category: "Designer Blouses" },
   { id: "db-4", src: "/assets/gallery/g1-02.jpg", alt: "Red designer blouse on mannequin", category: "Designer Blouses" },
   { id: "db-5", src: "/assets/gallery/g2-01.jpg", alt: "Purple gold designer blouse", category: "Designer Blouses" },
+  { id: "db-new-ds1", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789629240/ds1.jpg", alt: "New designer blouse detail", category: "Designer Blouses" },
 
   // --- BRIDAL COLLECTION ---
   { id: "br-masterpiece", src: "https://res.cloudinary.com/ag114ghj/image/upload/v1789279064/Gemini_Generated_Image_dzsdffdzsdffdzsd.png", alt: "Signature bridal couture masterpiece blouse", category: "Bridal Collection" },

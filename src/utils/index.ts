@@ -21,20 +21,20 @@ export function isValidEmail(email: string) {
 }
 
 /**
- * Delivers pristine, razor-sharp Cloudinary images without compression or blur.
+ * Delivers responsive Cloudinary images without sending desktop-sized files to phones.
  */
 export function getOptimizedImageUrl(url: string, width?: number) {
   if (!url || !url.includes("res.cloudinary.com") || url.includes("f_auto")) {
     return url;
   }
   if (width) {
-    return url.replace("/upload/", `/upload/f_auto,q_100,w_${width},dpr_2.0/`);
+    return url.replace("/upload/", `/upload/f_auto,q_auto:good,w_${width}/`);
   }
-  return url.replace("/upload/", "/upload/f_auto,q_100,dpr_2.0/");
+  return url.replace("/upload/", "/upload/f_auto,q_auto:good/");
 }
 
 /**
- * Generates a high-DPI srcSet for Cloudinary images ensuring crisp display on retina and mobile devices.
+ * Generates a responsive srcSet so mobile devices select a smaller image before downloading.
  */
 export function getResponsiveSrcSet(url: string) {
   if (!url || !url.includes("res.cloudinary.com") || url.endsWith(".mp4")) {
@@ -43,17 +43,27 @@ export function getResponsiveSrcSet(url: string) {
   const parts = url.split("/upload/");
   if (parts.length < 2) return undefined;
   const cleanRest = parts[1].replace(/^f_auto,q_.*?\//, "");
-  return `${parts[0]}/upload/f_auto,q_100,w_800,dpr_2.0/${cleanRest} 800w, ${parts[0]}/upload/f_auto,q_100,w_1400,dpr_2.0/${cleanRest} 1400w, ${parts[0]}/upload/f_auto,q_100,w_2000,dpr_2.0/${cleanRest} 2000w`;
+  return `${parts[0]}/upload/f_auto,q_auto:good,w_480/${cleanRest} 480w, ${parts[0]}/upload/f_auto,q_auto:good,w_800/${cleanRest} 800w, ${parts[0]}/upload/f_auto,q_auto:good,w_1200/${cleanRest} 1200w`;
 }
 
 /**
- * Generates a high-definition video poster URL from Cloudinary (using second 1 for a crisp in-focus frame).
+ * Generates a lightweight video poster URL from Cloudinary.
  */
 export function getVideoPosterUrl(url: string) {
   if (!url || !url.includes("res.cloudinary.com")) {
     return undefined;
   }
   return url
-    .replace("/video/upload/", "/video/upload/so_1,f_auto,q_100,w_1200,dpr_2.0/")
+    .replace("/video/upload/", "/video/upload/so_1,f_auto,q_auto:good,w_720/")
     .replace(/\.mp4$/i, ".jpg");
+}
+
+export function getOptimizedVideoUrl(url: string, width = 720) {
+  if (!url || !url.includes("res.cloudinary.com")) {
+    return url;
+  }
+  return url.replace(
+    "/video/upload/",
+    `/video/upload/f_auto,q_auto:good,w_${width},vc_auto/`
+  );
 }

@@ -17,6 +17,12 @@ npm run server
 
 Open http://localhost:5173
 
+## Deploy to Vercel
+
+The project includes `vercel.json` for direct loading of the `/privacy` and `/terms` routes.
+Set `VITE_SITE_URL` to the production URL when configuring Vercel. The enquiry form uses WhatsApp
+as its production fallback unless `VITE_API_URL` points to a separately deployed API.
+
 ## Replace media
 
 Drop originals into `public/assets/`:

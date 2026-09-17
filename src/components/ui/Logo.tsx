@@ -9,7 +9,7 @@ export function Logo({ className, compact }: Props) {
   return (
     <span className={cn("flex items-center gap-3", className)}>
       <img
-        src="/logo bq.jpg"
+        src="/assets/logo/logo%20bq.jpg"
         alt={`${SITE.name} logo`}
         width={width}
         className={cn(size, "object-contain")}

@@ -1,6 +1,6 @@
 import { Reveal } from "@/components/ui/Reveal";
-import { SafeImage } from "@/components/ui/SafeImage";
 import { STATS } from "@/constants/site";
+import { getOptimizedVideoUrl } from "@/utils";
 import { useEffect, useRef, useState } from "react";
 
 function Counter({ value, suffix, decimals = 0 }: { value: number; suffix: string; decimals?: number }) {
@@ -61,7 +61,7 @@ export function About() {
       <Reveal x={-24}>
         <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-black">
           <video
-            src="https://res.cloudinary.com/ag114ghj/video/upload/v1789107730/craftvideo.mp4"
+            src={getOptimizedVideoUrl("https://res.cloudinary.com/ag114ghj/video/upload/v1789107730/craftvideo.mp4", 720)}
             poster="/assets/about/artisan.jpg"
             autoPlay
             muted

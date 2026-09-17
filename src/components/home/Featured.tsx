@@ -2,7 +2,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { FEATURED_PAIRS, waLink } from "@/constants/site";
 import type { FeaturedItem } from "@/constants/site";
-import { getVideoPosterUrl } from "@/utils";
+import { getOptimizedVideoUrl, getVideoPosterUrl } from "@/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, MessageCircle, Sparkles } from "lucide-react";
 import { useRef, useState } from "react";
@@ -25,18 +25,18 @@ function CraftFrame({ item, side }: { item: FeaturedItem; side: "left" | "right"
         {isVideo ? (
           <video
             ref={videoRef}
-            src={item.src}
+            src={getOptimizedVideoUrl(item.src)}
             poster={poster}
             autoPlay
             muted
             loop
             playsInline
-            preload="none"
+            preload="metadata"
             onEnded={(e) => {
               e.currentTarget.currentTime = 0;
               e.currentTarget.play().catch(() => {});
             }}
-            className="relative z-10 h-full w-full object-contain p-1 sm:p-2"
+            className="relative z-10 h-full w-full object-contain"
           />
         ) : (
           <SafeImage

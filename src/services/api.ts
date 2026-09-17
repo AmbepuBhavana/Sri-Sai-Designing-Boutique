@@ -2,7 +2,7 @@ import { SITE } from "@/constants/site";
 import type { EnquiryPayload } from "@/types";
 import { isValidEmail, isValidIndianMobile, sanitizeText } from "@/utils";
 
-const API = import.meta.env.VITE_API_URL || "/api";
+const API = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? "/api" : "");
 
 export function validateEnquiry(data: EnquiryPayload) {
   const errors: Record<string, string> = {};
@@ -36,6 +36,10 @@ export async function submitEnquiry(payload: EnquiryPayload) {
 
   const waUrl = getEnquiryWhatsAppUrl(body);
 
+  if (!API) {
+    return openWhatsAppFallback(waUrl);
+  }
+
   try {
     const res = await fetch(`${API}/enquiries`, {
       method: "POST",
@@ -45,15 +49,19 @@ export async function submitEnquiry(payload: EnquiryPayload) {
     if (!res.ok) throw new Error("api");
     return { ok: true as const, via: "api" as const, waUrl };
   } catch {
-    let popupBlocked = false;
-    try {
-      const win = window.open(waUrl, "_blank", "noopener,noreferrer");
-      if (!win || win.closed || typeof win.closed === "undefined") {
-        popupBlocked = true;
-      }
-    } catch {
+    return openWhatsAppFallback(waUrl);
+  }
+}
+
+function openWhatsAppFallback(waUrl: string) {
+  let popupBlocked = false;
+  try {
+    const win = window.open(waUrl, "_blank", "noopener,noreferrer");
+    if (!win || win.closed || typeof win.closed === "undefined") {
       popupBlocked = true;
     }
-    return { ok: true as const, via: "whatsapp" as const, waUrl, popupBlocked };
+  } catch {
+    popupBlocked = true;
   }
+  return { ok: true as const, via: "whatsapp" as const, waUrl, popupBlocked };
 }
