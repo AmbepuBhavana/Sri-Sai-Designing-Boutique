@@ -1,6 +1,6 @@
 import type { FaqItem, GalleryItem, Service, Testimonial } from "@/types";
 
-const SITE_URL = import.meta.env.VITE_SITE_URL || "https://srisaidesigningboutiquerampally.vercel.app";
+const SITE_URL = "https://srisaidesigningboutiquerampally.vercel.app";
 
 export const SITE = {
   name: "Sri Sai Designing Boutique",
