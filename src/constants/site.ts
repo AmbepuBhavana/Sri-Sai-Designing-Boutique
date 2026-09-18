@@ -30,28 +30,50 @@ export const WHATSAPP_CUSTOMER_MESSAGE = `Hi ${SITE.name},
 
 I found your website and I’m interested in your services.
 
-Please share your designs, pricing, location, and appointment details.
+Please share your designs, pricing, and appointment details.
 
 Thank you.`;
 
 export const WHATSAPP_WELCOME_MESSAGE = WHATSAPP_CUSTOMER_MESSAGE;
 
-export function addBusinessDetailsToWhatsAppText(text: string) {
-  if (text === WHATSAPP_CUSTOMER_MESSAGE) {
-    return text;
+function dedupeRepeatedWhatsAppMessage(text: string) {
+  const trimmed = text.trim();
+  const defaultMessage = WHATSAPP_CUSTOMER_MESSAGE.trim();
+
+  if (!trimmed || trimmed === defaultMessage) {
+    return trimmed;
   }
 
+  if (trimmed.includes(defaultMessage)) {
+    const copies = trimmed.split(defaultMessage).length - 1;
+    if (copies > 1) {
+      return defaultMessage;
+    }
+  }
+
+  return trimmed;
+}
+
+export function addBusinessDetailsToWhatsAppText(text: string) {
+  const safeText = dedupeRepeatedWhatsAppMessage(text);
+
+  if (safeText === WHATSAPP_CUSTOMER_MESSAGE.trim()) {
+    return safeText;
+  }
+
+  const isPricingInquiry = /(pricing|price|quote|estimate|budget|cost)/i.test(safeText);
+
   const details = [
-    !text.includes(SITE.mapsShare) ? `Location: ${SITE.mapsShare}` : "",
-    !text.includes(SITE.phone) ? `Contact: ${SITE.phone}` : "",
-    !text.includes(SITE.url) ? `Website: ${SITE.url}` : "",
+    isPricingInquiry && !safeText.includes(SITE.mapsShare) ? `Location: ${SITE.mapsShare}` : "",
+    !safeText.includes(SITE.phone) ? `Contact: ${SITE.phone}` : "",
+    !safeText.includes(SITE.url) ? `Website: ${SITE.url}` : "",
   ].filter(Boolean);
 
   if (!details.length) {
-    return text;
+    return safeText;
   }
 
-  return `${text}\n\n${details.join("\n")}`;
+  return `${safeText}\n\n${details.join("\n")}`;
 }
 
 export const waLink = (text = WHATSAPP_WELCOME_MESSAGE) =>
